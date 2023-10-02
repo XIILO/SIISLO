@@ -1,0 +1,12 @@
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.csproj.AssemblyReference.cache
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.bangdieukhien.resources
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.Properties.Resources.resources
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.csproj.GenerateResource.cache
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.csproj.CoreCompileInputs.cache
+E:\Project Group 5\QLKT\Mainproject\bin\Debug\Mainproject.exe.config
+E:\Project Group 5\QLKT\Mainproject\bin\Debug\Mainproject.exe
+E:\Project Group 5\QLKT\Mainproject\bin\Debug\Mainproject.pdb
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.exe
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.pdb
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.hopdong.resources
+E:\Project Group 5\QLKT\Mainproject\obj\Debug\Mainproject.phongtro.resources
