@@ -37,8 +37,8 @@ namespace Mainproject
                     new SqlParameter("@trangthaiphong", trangthaiphong.Text),
                 };
                 csdl.proc(tenproc, parameters);
+
                 MessageBox.Show("Thêm thành công", "Thông báo");
-                
 
             }
             else
@@ -89,6 +89,17 @@ namespace Mainproject
                 MessageBox.Show("Hãy nhập số phòng để thao tác xóa", "Thông báo");
             }
 
+        }
+
+        public void FillData(int sp, decimal dt, decimal gt, decimal td, decimal tn, decimal tm, string ttp)
+        {
+            sophong.Text = sp.ToString();
+            dientich.Text = dt.ToString();
+            giathue.Text = gt.ToString();
+            tiendien.Text = td.ToString();
+            tiennuoc.Text = tn.ToString();
+            tienmang.Text = tm.ToString();
+            trangthaiphong.Text = ttp.ToString();
         }
 
         private void phongtro_Load(object sender, EventArgs e)

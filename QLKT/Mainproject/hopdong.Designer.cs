@@ -46,7 +46,7 @@
             this.sophonghd = new System.Windows.Forms.TextBox();
             this.tiencoc = new System.Windows.Forms.TextBox();
             this.themhopdong = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.sua = new System.Windows.Forms.Button();
             this.xoahopdong = new System.Windows.Forms.Button();
             this.groupboxhd.SuspendLayout();
             this.SuspendLayout();
@@ -71,7 +71,7 @@
             this.groupboxhd.Controls.Add(this.sophonghd);
             this.groupboxhd.Controls.Add(this.tiencoc);
             this.groupboxhd.Controls.Add(this.themhopdong);
-            this.groupboxhd.Controls.Add(this.button1);
+            this.groupboxhd.Controls.Add(this.sua);
             this.groupboxhd.Controls.Add(this.xoahopdong);
             this.groupboxhd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.groupboxhd.Location = new System.Drawing.Point(12, 12);
@@ -236,15 +236,15 @@
             this.themhopdong.UseVisualStyleBackColor = true;
             this.themhopdong.Click += new System.EventHandler(this.themhopdong_Click);
             // 
-            // button1
+            // sua
             // 
-            this.button1.Location = new System.Drawing.Point(387, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 61);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Sửa";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.sua.Location = new System.Drawing.Point(387, 228);
+            this.sua.Name = "sua";
+            this.sua.Size = new System.Drawing.Size(117, 61);
+            this.sua.TabIndex = 0;
+            this.sua.Text = "Sửa";
+            this.sua.UseVisualStyleBackColor = true;
+            this.sua.Click += new System.EventHandler(this.button1_Click);
             // 
             // xoahopdong
             // 
@@ -264,7 +264,6 @@
             this.Controls.Add(this.groupboxhd);
             this.Name = "hopdong";
             this.Text = "Quản lý hợp đồng";
-            this.Load += new System.EventHandler(this.hopdong_Load);
             this.groupboxhd.ResumeLayout(false);
             this.groupboxhd.PerformLayout();
             this.ResumeLayout(false);
@@ -291,7 +290,7 @@
         private System.Windows.Forms.TextBox sophonghd;
         private System.Windows.Forms.TextBox tiencoc;
         private System.Windows.Forms.Button themhopdong;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sua;
         private System.Windows.Forms.Button xoahopdong;
     }
 }

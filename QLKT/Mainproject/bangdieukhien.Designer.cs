@@ -31,8 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bảngThốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewtongquat = new System.Windows.Forms.DataGridView();
             this.phòngTrọToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewtongquat = new System.Windows.Forms.DataGridView();
             this.reloadgrview = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewtongquat)).BeginInit();
@@ -61,9 +61,16 @@
             // bảngThốngKêToolStripMenuItem
             // 
             this.bảngThốngKêToolStripMenuItem.Name = "bảngThốngKêToolStripMenuItem";
-            this.bảngThốngKêToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bảngThốngKêToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.bảngThốngKêToolStripMenuItem.Text = "Hợp đồng";
             this.bảngThốngKêToolStripMenuItem.Click += new System.EventHandler(this.bảngThốngKêToolStripMenuItem_Click);
+            // 
+            // phòngTrọToolStripMenuItem
+            // 
+            this.phòngTrọToolStripMenuItem.Name = "phòngTrọToolStripMenuItem";
+            this.phòngTrọToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.phòngTrọToolStripMenuItem.Text = "Phòng trọ";
+            this.phòngTrọToolStripMenuItem.Click += new System.EventHandler(this.phòngTrọToolStripMenuItem_Click);
             // 
             // viewtongquat
             // 
@@ -73,13 +80,7 @@
             this.viewtongquat.Name = "viewtongquat";
             this.viewtongquat.Size = new System.Drawing.Size(1438, 772);
             this.viewtongquat.TabIndex = 4;
-            // 
-            // phòngTrọToolStripMenuItem
-            // 
-            this.phòngTrọToolStripMenuItem.Name = "phòngTrọToolStripMenuItem";
-            this.phòngTrọToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.phòngTrọToolStripMenuItem.Text = "Phòng trọ";
-            this.phòngTrọToolStripMenuItem.Click += new System.EventHandler(this.phòngTrọToolStripMenuItem_Click);
+            this.viewtongquat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.viewtongquat_CellContentClick);
             // 
             // reloadgrview
             // 

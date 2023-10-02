@@ -18,6 +18,11 @@ namespace Mainproject
         SqlDataAdapter laydulieu = null;
         DataTable bangdulieu = null;
 
+
+
+
+
+        // hàm gọi tới Pro 
         public DataTable proc(string tenproc, SqlParameter[] parameters)
         {
             ketnoi = new SqlConnection(chuoiketnoi);

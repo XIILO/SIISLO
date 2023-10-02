@@ -23,75 +23,80 @@ namespace Mainproject
         {
             try
             {
-                if (int.TryParse(mahopdong.Text, out int mhd) && float.TryParse(cccd.Text, out float cccdnt) &&
-                float.TryParse(sodienthoai.Text, out float sdt) && int.TryParse(sophonghd.Text, out int sp) &&
-                decimal.TryParse(tiencoc.Text, out decimal tc) && DateTime.TryParse(ngaybatdau.Text, out DateTime nbd)
-                && DateTime.TryParse(ngayketthuc.Text, out DateTime nkt))
+                int mhd = default;
+                float cccdnt = default;
+                string hvt = default;
+                float sdt = default;
+                int sp = default;
+                decimal tc = default;
+                DateTime nbd = default;
+                DateTime nkt = default;
+
+                if (int.TryParse(mahopdong.Text, out mhd) && float.TryParse(cccd.Text, out cccdnt)
+                    && float.TryParse(sodienthoai.Text, out sdt) && int.TryParse(sophonghd.Text, out sp)
+                    && decimal.TryParse(tiencoc.Text, out tc) && DateTime.TryParse(ngaybatdau.Text, out nbd)
+                    && DateTime.TryParse(ngayketthuc.Text, out nkt))
                 {
                     SqlParameter[] parameters =
                     {
-                        new SqlParameter("@mahopdong", mhd),
-                        new SqlParameter("@cancuoccongdannguoithue", cccdnt),
-                        new SqlParameter("@hovatennguoithue", hovaten.Text),
-                        new SqlParameter("@sodienthoainguoithue", sdt),
-                        new SqlParameter("@sophong", sp),
-                        new SqlParameter("@sotiencoc", tc),
-                        new SqlParameter("@ngaybatdau", nbd),
-                        new SqlParameter("@ngayketthuc", nkt),
-                    };
-                    string tenproc = "themhopdongthue";
+                    new SqlParameter("@mahopdong", mhd),
+                    new SqlParameter("@cancuoccongdannguoithue", cccdnt),
+                    new SqlParameter("@hovatennguoithue", hovaten.Text),
+                    new SqlParameter("@sodienthoainguoithue", sdt),
+                    new SqlParameter("@sophong", sp),
+                    new SqlParameter("@sotiencoc", tc),
+                    new SqlParameter("@ngaybatdau", nbd),
+                    new SqlParameter("@ngayketthuc", nkt),
+                };
+                    string tenproc = "themhopdong"; // Tên stored procedure bạn đã tạo
                     csdl.proc(tenproc, parameters);
-                    MessageBox.Show(" Thêm thành công ", "Thông báo");
+                    MessageBox.Show("Thêm thành công", "Thông báo");
                 }
-                else
-                {
-                    MessageBox.Show(" Thêm không thành công do thiếu thông tin, thông tin không đúng với kiểu dữ liệu,  hoặc trùng mã hợp đồng ", "Thông báo");
-                }
-
             }
             catch
             {
-                MessageBox.Show("Lỗi hệ thống");
+                MessageBox.Show("Thêm không thành công", "Thông báo");
             }
             
-            
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (int.TryParse(mahopdong.Text, out int mhd) && float.TryParse(cccd.Text, out float cccdnt) &&
-                float.TryParse(sodienthoai.Text, out float sdt) && int.TryParse(sophonghd.Text, out int sp) &&
-                decimal.TryParse(tiencoc.Text, out decimal tc) && DateTime.TryParse(ngaybatdau.Text, out DateTime nbd)
-                && DateTime.TryParse(ngayketthuc.Text, out DateTime nkt))
-                {
-                    SqlParameter[] parameters =
-                    {
-                        new SqlParameter("@mahopdong", mhd),
-                        new SqlParameter("@cancuoccongdannguoithue", cccdnt),
-                        new SqlParameter("@hovatennguoithue", hovaten.Text),
-                        new SqlParameter("@sodienthoainguoithue", sdt),
-                        new SqlParameter("@sophong", sp),
-                        new SqlParameter("@sotiencoc", tc),
-                        new SqlParameter("@ngaybatdau", nbd),
-                        new SqlParameter("@ngayketthuc", nkt),
-                    };
-                    string tenproc = "themhopdongthue";
-                    csdl.proc(tenproc, parameters);
-                    MessageBox.Show(" cập thành công ", "Thông báo");
-                }
-                else
-                {
-                    MessageBox.Show(" Cập nhật không thành công do thiếu thông tin, thông tin không đúng với kiểu dữ liệu ", "Thông báo");
-                }
+       
+            int mhd = default;
+            float cccdnt = default;
+            string hvt = default;
+            float sdt = default;
+            int sp = default;
+            decimal tc = default;
+            DateTime nbd = default;
+            DateTime nkt = default;
 
-            }
-            catch
+            if(int.TryParse(mahopdong.Text, out mhd) && float.TryParse(cccd.Text, out cccdnt) 
+                && float.TryParse(sodienthoai.Text, out sdt) && int.TryParse(sophonghd.Text, out sp)
+                && decimal.TryParse(tiencoc.Text, out tc) && DateTime.TryParse(ngaybatdau.Text, out nbd)
+                && DateTime.TryParse(ngayketthuc.Text, out nkt))
             {
-                MessageBox.Show("Lỗi hệ thống");
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@mahopdong", mhd),
+                    new SqlParameter("@cancuoccongdannguoithue", cccdnt),
+                    new SqlParameter("@hovatennguoithue", hovaten.Text),
+                    new SqlParameter("@sodienthoainguoithue", sdt),
+                    new SqlParameter("@sophong", sp),
+                    new SqlParameter("@sotiencoc", tc),
+                    new SqlParameter("@ngaybatdau", nbd),
+                    new SqlParameter("@ngayketthuc", nkt),
+                };
+                string tenproc = "capnhat_hopdong"; // Tên stored procedure bạn đã tạo
+                csdl.proc(tenproc, parameters);
+                MessageBox.Show("Cập nhật thành công", "Thông báo");
             }
+
         }
+
+
 
         private void xoahopdong_Click(object sender, EventArgs e)
         {
@@ -108,9 +113,24 @@ namespace Mainproject
             }
         }
 
+
+
         private void hopdong_Load(object sender, EventArgs e)
         {
 
         }
+
+        public void FillData(int mhd, float cccdnt, string hvt, float sdt, int sp, decimal tc, DateTime nbd, DateTime nkt)
+        {
+            mahopdong.Text = mhd.ToString();
+            cccd.Text = cccd.ToString();
+            hovaten.Text = hvt.ToString();  
+            sodienthoai.Text = sdt.ToString();
+            tiencoc.Text = tc.ToString();
+            sophonghd.Text = sdt.ToString();    
+            ngaybatdau.Text = nbd.ToString();
+            ngayketthuc.Text = nkt.ToString();
+        }
+
     }
 }
