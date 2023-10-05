@@ -1,0 +1,11 @@
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.csproj.AssemblyReference.cache
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.phongtro.resources
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.Properties.Resources.resources
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.csproj.GenerateResource.cache
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.csproj.CoreCompileInputs.cache
+E:\Project Group 5\QLKT\QLKT\bin\Debug\QLKT.exe.config
+E:\Project Group 5\QLKT\QLKT\bin\Debug\QLKT.exe
+E:\Project Group 5\QLKT\QLKT\bin\Debug\QLKT.pdb
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.exe
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.pdb
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.hopdong.resources
