@@ -207,25 +207,28 @@ BEGIN
         SET @exists = 1;
     END
 END
-
--- Kiểm tra hợp đồng mới đa tồn tại hay chưa ? 
-
-CREATE PROCEDURE CheckHopDongExists
+ 
+ -- Kiểm tra mã hợp đồng và số phòng có trùng
+CREATE PROCEDURE CheckHopDongMaPhong
     @mahopdong INT,
+	@sophong INT, 
     @exists BIT OUTPUT
 AS
 BEGIN
     SET @exists = 0;
     
-    IF EXISTS (SELECT 1 FROM hopdongthue WHERE mahopdong = @mahopdong)
+    IF EXISTS (SELECT 1 FROM hopdongthue WHERE mahopdong = @mahopdong and sophong = @sophong)
     BEGIN
         SET @exists = 1;
     END
+	ELSE 
+	BEGIN
+		SET @exists = 0;
+	END
 END
 
-select * from hopdongthue
 
-
+drop proc CheckHopDongMaPhong
 
 
 
