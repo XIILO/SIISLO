@@ -256,13 +256,6 @@ namespace QLKT
         }
 
 
-        private void hóaĐơnToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            hoadon hd = new hoadon();
-            hd.Show();
-            this.Close();
-        }
-
         private void thôngTinHợpĐồngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string tablename = "HDTHienThi";
@@ -275,5 +268,11 @@ namespace QLKT
             load(tablename);
         }
 
+        private void hóaĐơnToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            hoadon hd = new hoadon();
+            hd.Show();
+            this.Close();
+        }
     }
 }

@@ -124,6 +124,24 @@ namespace QLKT
 
         }
 
+        private void xoatoanbotheothang_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(thang.Text))
+            {
+                MessageBox.Show("Hãy nhập tháng để xóa hết hóa đơn", "Thông báo");
+                return;
+            }
+            if (!(int.TryParse(thang.Text, out int t) || t > 12 || t <= 0))
+            {
+                MessageBox.Show("Tháng không hợp lệ", "Báo Lỗi");
+                return;
+            }
+            SqlParameter[] parameters = { new SqlParameter("@thang", t) };
+            string procname = "HoaDonXoatoanbotheothang";
+            dtb.Proc(procname, parameters);
+            MessageBox.Show("Xóa thành công", "Thông báo");
+        }
+
         private void datagridviewhoadon_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -144,6 +162,9 @@ namespace QLKT
             catch (Exception ex) { }
             
         }
+
+
+
 
 
         public void load(string tablename)
@@ -211,10 +232,7 @@ namespace QLKT
             load(tablename);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 
 }

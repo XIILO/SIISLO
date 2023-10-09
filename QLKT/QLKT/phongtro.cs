@@ -230,12 +230,6 @@ namespace QLKT
             this.Close();
         }
         // Load Hóa đơn
-        private void HóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            hoadon hd = new hoadon();
-            hd.Show();
-            this.Close();
-        }
 
 
 
@@ -275,12 +269,14 @@ namespace QLKT
 
         private void buttimkiem_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(timkiem.Text))
-            {
-                MessageBox.Show("Nhập thông tin cần tìm", "Thông báo");
-                return;
-            }
             
+        }
+
+        private void hóaĐơnToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            hoadon hd = new hoadon();
+            hd.Show();
+            this.Close();
         }
     }
 }

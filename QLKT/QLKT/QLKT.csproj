@@ -65,6 +65,12 @@
     <Compile Include="hopdong.Designer.cs">
       <DependentUpon>hopdong.cs</DependentUpon>
     </Compile>
+    <Compile Include="nhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nhanvien.Designer.cs">
+      <DependentUpon>nhanvien.cs</DependentUpon>
+    </Compile>
     <Compile Include="phongtro.cs">
       <SubType>Form</SubType>
     </Compile>
