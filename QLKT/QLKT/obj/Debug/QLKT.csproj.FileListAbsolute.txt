@@ -9,3 +9,5 @@ E:\Project Group 5\QLKT\QLKT\bin\Debug\QLKT.pdb
 E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.exe
 E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.pdb
 E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.hopdong.resources
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.hoadon.resources
+E:\Project Group 5\QLKT\QLKT\obj\Debug\QLKT.dangnhap.resources

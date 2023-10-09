@@ -15,44 +15,37 @@ namespace QLKT
     {
 
 
-        string stringconnect = @"Data Source=SIILO;Initial Catalog=QLKT2;Integrated Security=True";
+        string stringconnect = @"Data Source=SIILO;Initial Catalog=QLKT;Integrated Security=True";
         public SqlConnection connector;
         public SqlCommand commander;
         public SqlDataAdapter adapter;
         public DataTable table;
         public SqlDataReader reader;
 
-
-        public bool CheckDataExists(string procname, SqlParameter[] parameters)
+        public bool checker(string procname, SqlParameter[] parameter) 
         {
-            bool dataExists = false;
+            
             connector = new SqlConnection(stringconnect);
-            connector.Open();
-            commander = new SqlCommand(procname, connector);           
+            commander = new SqlCommand(procname, connector);
             commander.CommandType = CommandType.StoredProcedure;
-
-            // Thêm OUTPUT parameter
-            SqlParameter existsParameter = new SqlParameter("@exists", SqlDbType.Bit);
-            existsParameter.Direction = ParameterDirection.Output;
-            commander.Parameters.Add(existsParameter);
-            if (parameters != null)
-            {
-                commander.Parameters.AddRange(parameters);
-            }
-            try
-            {
-                commander.ExecuteNonQuery();
-                dataExists = (bool)existsParameter.Value;
-            }
-       
-            catch (SqlException ex)
+            connector.Open();
+            commander.Parameters.AddRange(parameter);
+            bool result = (bool)commander.ExecuteScalar();
+            if(result)
             {
                
+                commander.Dispose();
+                connector.Close();
+                return true;
             }
-
-            return dataExists;
+            else
+            {
+                
+                commander.Dispose();
+                connector.Close();
+                return false;
+            }   
         }
-
 
         public DataTable Proc(string procname, SqlParameter[] parameters)
         {
@@ -72,12 +65,12 @@ namespace QLKT
                 commander.ExecuteNonQuery();
                 adapter.Fill(table);
             }
-            connector.Close();
             commander.Dispose();
             adapter.Dispose();
+            connector.Close();
+
             return table;
         }
-
 
 
     }

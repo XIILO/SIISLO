@@ -43,24 +43,40 @@ namespace QLKT
         // Thêm
         private void butadd_Click(object sender, EventArgs e)
         {
-            try
+            
+            
+            if (string.IsNullOrEmpty(texsophong.Text) ||
+                string.IsNullOrEmpty(texdientich.Text) ||
+                string.IsNullOrEmpty(texgiathue.Text) ||
+                string.IsNullOrEmpty(textiendien.Text) ||
+                string.IsNullOrEmpty(textiennuoc.Text) ||
+                string.IsNullOrEmpty(textienmang.Text) ||
+                string.IsNullOrEmpty(textrangthai.Text))
             {
-                if (string.IsNullOrEmpty(texsophong.Text) ||
-                    string.IsNullOrEmpty(texdientich.Text) ||
-                    string.IsNullOrEmpty(texgiathue.Text) ||
-                    string.IsNullOrEmpty(textiendien.Text) ||
-                    string.IsNullOrEmpty(textiennuoc.Text) ||
-                    string.IsNullOrEmpty(textienmang.Text) ||
-                    string.IsNullOrEmpty(textrangthai.Text))
+                MessageBox.Show("Dữ liệu trống", "Báo lỗi");
+                return;
+            }
+            int sp = default(int);
+            decimal dt = default(decimal);
+            decimal gt = default(decimal);
+            decimal td = default(decimal);
+            decimal tn = default(decimal);
+            decimal tm = default(decimal);
+
+            if (int.TryParse(texsophong.Text, out sp) && decimal.TryParse(texdientich.Text, out  dt) &&
+            decimal.TryParse(texgiathue.Text, out gt) && decimal.TryParse(textiendien.Text, out td) &&
+            decimal.TryParse(textiennuoc.Text, out tn) && decimal.TryParse(textienmang.Text, out tm))
+            {
+                SqlParameter[] parameter = { new SqlParameter("@sophong", sp) };
+                string procchecker = "PTKhongThemKhiTrung";
+                if (dtb.checker(procchecker, parameter))
                 {
-                    MessageBox.Show("Dữ liệu trống", "Báo lỗi");
+
+                    MessageBox.Show("Phòng này đã tồn tại", "Báo lỗi");
                     return;
                 }
-
-                if (int.TryParse(texsophong.Text, out int sp) && decimal.TryParse(texdientich.Text, out decimal dt) &&
-                decimal.TryParse(texgiathue.Text, out decimal gt) && decimal.TryParse(textiendien.Text, out decimal td) &&
-                decimal.TryParse(textiennuoc.Text, out decimal tn) && decimal.TryParse(textienmang.Text, out decimal tm))
-                {   
+                else
+                {
                     SqlParameter[] parameters =
                     {
                         new SqlParameter("@sophong", sp),
@@ -72,69 +88,73 @@ namespace QLKT
                         new SqlParameter("@trangthaiphong", textrangthai.Text),
                     };
 
-                    SqlParameter[] parameter = { new SqlParameter("@sophong", sp) };
-                    
-                    string procchecker = "CheckPhongTroExists";
-                    dtb.CheckDataExists(procchecker, parameter);
-
-
-                    string procname = "ThemPhongTro";
+                    string procname = "PTThem";
                     dtb.Proc(procname, parameters);
                     string tablename = "HienThiThongTinTongQuat";
                     load(tablename);
                     MessageBox.Show("Thành công", "Thông báo");
-                }             
+                }
             }
-            catch
+            else
             {
-                MessageBox.Show("Phòng này đã tồn tại", "Báo lỗi");
+                MessageBox.Show("Dữ liệu nhập vào không phù hợp", "Báo Lỗi");
             }
+           
+            
+
         }
 
 
         // Sửa
         private void butalter_Click(object sender, EventArgs e)
         {
-            int sp;
-            decimal dt, gt, td, tn, tm;
 
-            try
+            if (string.IsNullOrEmpty(texsophong.Text) ||
+                string.IsNullOrEmpty(texdientich.Text) ||
+                string.IsNullOrEmpty(texgiathue.Text) ||
+                string.IsNullOrEmpty(textiendien.Text) ||
+                string.IsNullOrEmpty(textiennuoc.Text) ||
+                string.IsNullOrEmpty(textienmang.Text) ||
+                string.IsNullOrEmpty(textrangthai.Text))
             {
-                if(string.IsNullOrEmpty(texsophong.Text))
+                MessageBox.Show("Dữ liệu trống", "Báo lỗi");
+                return;
+            }
+
+            if (int.TryParse(texsophong.Text, out int sp) && decimal.TryParse(texdientich.Text, out decimal dt) &&
+            decimal.TryParse(texgiathue.Text, out decimal gt) && decimal.TryParse(textiendien.Text, out decimal td) &&
+            decimal.TryParse(textiennuoc.Text, out decimal tn) && decimal.TryParse(textienmang.Text, out decimal tm))
+            {
+                SqlParameter[] parameter = { new SqlParameter("@sophong", sp) };
+                string checker = "PTKhongSuaKhiKhongtontai";
+                if (dtb.checker(checker, parameter) == false)
                 {
-                    MessageBox.Show("Hãy nhập số phòng để chỉnh sửa", "Báo lỗi");
+                    MessageBox.Show("Phòng không tồn tại ", "Báo lỗi");
                     return;
                 }
-                
-                if (int.TryParse(texsophong.Text, out sp) && decimal.TryParse(texdientich.Text, out dt) &&
-                decimal.TryParse(texgiathue.Text, out gt) && decimal.TryParse(textiendien.Text, out td) &&
-                decimal.TryParse(textiennuoc.Text, out tn) && decimal.TryParse(textienmang.Text, out tm))
+                SqlParameter[] parameters =
                 {
-                    SqlParameter[] parameters =
-                    {
-                        new SqlParameter("@sophong", sp),
-                        new SqlParameter("@dientich", dt),
-                        new SqlParameter("@giathue", gt),
-                        new SqlParameter("@tiendien",td),
-                        new SqlParameter("@tiennuoc", tn),
-                        new SqlParameter("@tienmang", tm),
-                        new SqlParameter("@trangthaiphong", textrangthai.Text),
-                    };
-  
-                    string procname = "SuaPhongTro";
-                    dtb.Proc(procname, parameters);
-                    string tablename = "HienThiThongTinTongQuat";
-                    load(tablename);
-                    MessageBox.Show("Thành công", "Thông báo");
+                    new SqlParameter("@sophong", sp),
+                    new SqlParameter("@dientich", dt),
+                    new SqlParameter("@giathue", gt),
+                    new SqlParameter("@tiendien", td),
+                    new SqlParameter("@tiennuoc", tn),
+                    new SqlParameter("@tienmang", tm),
+                    new SqlParameter("@trangthaiphong", textrangthai.Text),
+                };
 
-                }
+                string procname = "PTSua";
+                dtb.Proc(procname, parameters);
+                string tablename = "HienThiThongTinTongQuat";
+                load(tablename);
+                MessageBox.Show("Thành công", "Thông báo");
+                
             }
-            catch
+            else
             {
-                MessageBox.Show("Không thành công.", "Báo lỗi");
+                MessageBox.Show("Không thành công", "Báo lỗi ");
             }
-            
-            
+
         }
 
 
@@ -148,74 +168,119 @@ namespace QLKT
             }
             int sp;
             if (int.TryParse(texsophong.Text, out sp) )
-
             {
-                SqlParameter[] parameters =
+                SqlParameter[] parameter ={ new SqlParameter("@sophong", sp),};
+                string checker = "PTKhongXoaKhiKhongTonTai";
+                if (dtb.checker(checker, parameter) == false)
                 {
-                    new SqlParameter("@sophong", sp),
-    
-                };
-                string procname = "XoaPhongTro";
-                dtb.Proc(procname, parameters);
-                string tablename = "HienThiThongTinTongQuat";
-                load(tablename);
-                MessageBox.Show("Thành công", "Thông báo");
+                    MessageBox.Show("Không thể xóa khi không tồn tại phòng   "+texsophong.Text+"", "Báo lỗi");
+                    return;
+                }
+                string checker2 = "PTKhongXoaKhiDangCoNguoiThue";
+                SqlParameter[] parameter2 = { new SqlParameter("@sophong", sp),};
+                if(dtb.checker(checker2, parameter2))
+                {
+                    MessageBox.Show("Phòng "+texsophong.Text+" Đang có người thuê ", "Báo lỗi");
+                    return;
+                }
+                else
+                {
+                    SqlParameter[] parameters = { new SqlParameter("@sophong", sp), };
+                    string procname = "PTXoa";
+                    dtb.Proc(procname, parameters);
+                    string tablename = "HienThiThongTinTongQuat";
+                    load(tablename);
+                    MessageBox.Show("Thành công", "Thông báo");
+                    
+                }
+                
             }
         }
 
         //ClickLoad
         private void datagridviewphongtro_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = datagridviewphongtro.Rows[e.RowIndex];
-                texsophong.Text = row.Cells["sophong"].Value.ToString();
-                texdientich.Text = row.Cells["dientich"].Value.ToString();
-                texgiathue.Text = row.Cells["giathue"].Value.ToString();
-                textiendien.Text = row.Cells["tiendien"].Value.ToString();
-                textiennuoc.Text = row.Cells["tiennuoc"].Value.ToString();
-                textienmang.Text = row.Cells["tienmang"].Value.ToString();
-                textrangthai.Text = row.Cells["trangthaiphong"].Value.ToString();
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = datagridviewphongtro.Rows[e.RowIndex];
+                    texsophong.Text = row.Cells["sophong"].Value.ToString();
+                    texdientich.Text = row.Cells["dientich"].Value.ToString();
+                    texgiathue.Text = row.Cells["giathue"].Value.ToString();
+                    textiendien.Text = row.Cells["tiendien"].Value.ToString();
+                    textiennuoc.Text = row.Cells["tiennuoc"].Value.ToString();
+                    textienmang.Text = row.Cells["tienmang"].Value.ToString();
+                    textrangthai.Text = row.Cells["trangthaiphong"].Value.ToString();
+                }
             }
+            catch { }
         }
+
+
+
+
+
+
         // Load Hợp Đồng
         private void hợpĐồngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hopdong hd = new hopdong();
             hd.Show();
-            this.Hide();
+            this.Close();
         }
+        // Load Hóa đơn
+        private void HóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hoadon hd = new hoadon();
+            hd.Show();
+            this.Close();
+        }
+
+
+
+
+
+
+
+
+
+
 
         // Hiển thị đã cho thuê
         private void đãChoThuêToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string tablename = "PhongDaThue";
+            string tablename = "PTHienThiThongTinPhongDaChoThue";
             load(tablename);
         }
         // Hiển thị chưa cho thuê
         private void chưaChoThuêToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string tablename = "PhongChuaThue";
+            string tablename = "PTHienThiThongTinPhongChuaChoThue";
             load(tablename);
-        }
-        // Hiển thị Phòng
+        } 
 
-        private void thôngTinPhòngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string tablename = "HienThiThongTinPhongThue";
-            load(tablename);
-        }
-
-        private void HopDongToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string tablename = "HienThiThongTinHopDong";
-            load(tablename);
-        }
-
+        // Hiển thị tổng quát
         private void tổngQuátToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string tablename = "HienThiThongTinTongQuat";
             load(tablename);
+        }
+        // Hiển thị thông tin phòng
+        private void thôngTinPhòngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string tablename = "PTHienThiThongTinPhong";
+            load(tablename);
+        }
+
+        private void buttimkiem_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(timkiem.Text))
+            {
+                MessageBox.Show("Nhập thông tin cần tìm", "Thông báo");
+                return;
+            }
+            
         }
     }
 }

@@ -16,7 +16,7 @@ namespace QLKT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new phongtro());
+            Application.Run(new dangnhap());
         }
     }
 }
